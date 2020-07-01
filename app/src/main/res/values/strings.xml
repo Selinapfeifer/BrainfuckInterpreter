@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Brainfuck</string>
+    <string name="button">Ausführen</string>
+    <string name="buttonMoveRight">&gt;</string>
+    <string name="buttonMoveLeft">&lt;</string>
+    <string name="buttonIncrement">+</string>
+    <string name="buttonDecrement">-</string>
+    <string name="buttonLoopStart">[</string>
+    <string name="buttonLoopEnd">]</string>
+    <string name="buttonOutput">.</string>
+    <string name="buttonKomma">,</string>
+
+</resources>

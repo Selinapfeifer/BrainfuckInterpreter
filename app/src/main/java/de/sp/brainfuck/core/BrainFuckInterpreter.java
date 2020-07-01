@@ -21,6 +21,16 @@ public class BrainFuckInterpreter {
                 index--;
             } else if (chars[i] == '.') {
                 result.append(memory[index]);
+            } else if (chars[i] == '[') {
+                if(memory[index] == 0){
+                    int closingIndex = code.indexOf(']');
+                    i = closingIndex;
+                }
+            } else if (chars[i] == ']') {
+                if(memory[index] != 0){
+                    int openingIndex = code.indexOf('[');
+                    i = openingIndex;
+                }
             }
         }
         return result.toString();
@@ -36,8 +46,8 @@ public class BrainFuckInterpreter {
     private void checkCharIsValid(char chars) throws InvalidCharacterException {
         char[] validChars = {'>', '<', '+', '-', '[', ']', '.', ','};
 
-        for (int j = 0; j < validChars.length; j++) {
-            if (chars == validChars[j]) {
+        for (char validChar : validChars) {
+            if (chars == validChar) {
                 return;
             }
         }

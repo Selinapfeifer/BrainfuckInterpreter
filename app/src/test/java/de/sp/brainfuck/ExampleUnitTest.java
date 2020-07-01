@@ -2,6 +2,9 @@ package de.sp.brainfuck;
 
 import org.junit.Test;
 
+import de.sp.brainfuck.core.BrainFuckInterpreter;
+import de.sp.brainfuck.core.exception.InvalidCharacterException;
+
 import static org.junit.Assert.*;
 
 /**
@@ -11,7 +14,16 @@ import static org.junit.Assert.*;
  */
 public class ExampleUnitTest {
     @Test
-    public void addition_isCorrect() {
-        assertEquals(4, 2 + 2);
+    public void testOneLoop() throws InvalidCharacterException {
+        BrainFuckInterpreter cut = new BrainFuckInterpreter();
+        String result = cut.interpret(">+++++++++[<++++++++>-]<.");
+        assertEquals("H", result);
+    }
+
+    @Test
+    public void testOutputSize() throws InvalidCharacterException {
+        BrainFuckInterpreter cut = new BrainFuckInterpreter();
+        String result = cut.interpret(".....");
+        assertEquals(5, result.length());
     }
 }

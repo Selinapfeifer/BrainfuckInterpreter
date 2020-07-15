@@ -11,15 +11,17 @@ import android.widget.Toast;
 import de.sp.brainfuck.R;
 import de.sp.brainfuck.core.BrainFuckInterpreter;
 import de.sp.brainfuck.core.exception.InvalidCharacterException;
+import de.sp.brainfuck.core.exception.MalformedBracketsException;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     Button buttonMoveRight, buttonInterpret;
     EditText editText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-         editText = findViewById(R.id.editText);
+        editText = findViewById(R.id.editText);
         editText.setText("");
         buttonMoveRight = findViewById(R.id.buttonMoveRight);
         buttonMoveRight.setOnClickListener(this);
@@ -30,15 +32,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        if(buttonMoveRight.isPressed()){
+        if (buttonMoveRight.isPressed()) {
             editText.setText(editText.getText().append(">"));
-        } else if(buttonInterpret.isPressed()){
+        } else if (buttonInterpret.isPressed()) {
             BrainFuckInterpreter interpreter = new BrainFuckInterpreter();
             try {
                 String result = interpreter.interpret(editText.getText().toString());
-                Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();
-            } catch (InvalidCharacterException e) {
-                Toast.makeText(getApplicationContext(),"Fehler",Toast.LENGTH_SHORT).show();              }
+                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+            } catch (InvalidCharacterException | MalformedBracketsException e) {
+                Toast.makeText(getApplicationContext(), "Fehler", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }

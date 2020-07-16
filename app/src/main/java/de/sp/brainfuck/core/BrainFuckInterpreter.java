@@ -15,30 +15,30 @@ public class BrainFuckInterpreter {
     public String interpret(String code) throws InvalidCharacterException, MalformedBracketsException {
         char[] chars = code.toCharArray();
         char[] memory = new char[30];
-        int index = 0;
+        int memory_index = 0;
         List<Pair<Integer, Integer>> bracketPairs;
         bracketPairs = BrainFuckValidator.validateAndDetermineBracketPairs(chars);
 
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < chars.length; i++) {
             if (chars[i] == ValidCharacters.INCREASE.getCharacter()) {
-                memory[index]++;
+                memory[memory_index]++;
             } else if (chars[i] == ValidCharacters.DECREASE.getCharacter()) {
-                memory[index]--;
+                memory[memory_index]--;
             } else if (chars[i] == ValidCharacters.SHIFT_RIGHT.getCharacter()) {
-                index++;
+                memory_index++;
             } else if (chars[i] == ValidCharacters.SHIFT_LEFT.getCharacter()) {
-                index--;
+                memory_index--;
             } else if (chars[i] == ValidCharacters.PRINT.getCharacter()) {
-                result.append(memory[index]);
+                result.append(memory[memory_index]);
             } else if (chars[i] == ValidCharacters.READ_INPUT.getCharacter()) {
                 // todo memory[index] = "input value";
             } else if (chars[i] == ValidCharacters.OPEN_BRACKET.getCharacter()) {
-                if (memory[index] == 0) {
+                if (memory[memory_index] == 0) {
                     i = indexOfMatchingClosingBracket(bracketPairs, i);
                 }
             } else if (chars[i] == ValidCharacters.CLOSING_BRACKET.getCharacter()) {
-                if (memory[index] != 0) {
+                if (memory[memory_index] != 0) {
                     i = indexOfMatchingOpenBracket(bracketPairs,i);
                 }
             }

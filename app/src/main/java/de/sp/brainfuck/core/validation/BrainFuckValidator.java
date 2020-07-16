@@ -16,12 +16,12 @@ public class BrainFuckValidator {
 
         for (int i = 0; i < chars.length; i++) {
             checkCharIsValid(chars[i]);
-            if (chars[i] == '[') {
+            if (chars[i] == ValidCharacters.OPEN_BRACKET.getCharacter()) {
                 openBrackets.add(i);
-            } else if (chars[i] == ']') {
+            } else if (chars[i] == ValidCharacters.CLOSING_BRACKET.getCharacter()) {
                 if (!openBrackets.isEmpty()) {
                     int indexOfMatchingOpenBracket = openBrackets.size() - 1;
-                    Pair<Integer, Integer> pair = new Pair<Integer, Integer>(openBrackets.get(indexOfMatchingOpenBracket), i);
+                    Pair<Integer, Integer> pair = new Pair<>(openBrackets.get(indexOfMatchingOpenBracket), i);
                     bracketPairs.add(pair);
                     openBrackets.remove(indexOfMatchingOpenBracket);
                 } else {

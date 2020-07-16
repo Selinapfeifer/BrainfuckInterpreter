@@ -1,6 +1,7 @@
 package de.sp.brainfuck.core;
 
-import android.util.Pair;
+
+import androidx.core.util.Pair;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,17 +36,32 @@ public class BrainFuckInterpreter {
                 // todo
             } else if (chars[i] == ValidCharacters.OPEN_BRACKET.getCharacter()) {
                 if (memory[index] == 0) {
-                    int closingIndex = code.indexOf(']');
-                    i = closingIndex;
+                    i = indexOfMatchingClosingBracket(bracketPairs, i);
                 }
             } else if (chars[i] == ValidCharacters.CLOSING_BRACKET.getCharacter()) {
                 if (memory[index] != 0) {
-                    int openingIndex = code.indexOf('[');
-                    i = openingIndex;
+                    i = indexOfMatchingOpenBracket(bracketPairs,i);
                 }
             }
         }
         return result.toString();
+    }
+
+    private int indexOfMatchingClosingBracket(List<Pair<Integer, Integer>> bracketPairs, int indexOfOpenBracket) {
+        for (int i = 0; i < bracketPairs.size(); i++) {
+            if (bracketPairs.get(i).first == indexOfOpenBracket) {
+                return bracketPairs.get(i).second;
+            }
+        }
+        return -1;
+    }
+    private int indexOfMatchingOpenBracket(List<Pair<Integer, Integer>> bracketPairs, int indexOfClosedBracket) {
+        for (int i = 0; i < bracketPairs.size(); i++) {
+            if (bracketPairs.get(i).second == indexOfClosedBracket) {
+                return bracketPairs.get(i).first;
+            }
+        }
+        return -1;
     }
 
 }

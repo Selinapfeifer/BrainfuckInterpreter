@@ -1,6 +1,6 @@
 package de.sp.brainfuck.core.validation;
 
-import android.util.Pair;
+import androidx.core.util.Pair;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ public class BrainFuckValidator {
             } else if (chars[i] == ']') {
                 if (!openBrackets.isEmpty()) {
                     int indexOfMatchingOpenBracket = openBrackets.size() - 1;
-                    Pair<Integer, Integer> pair = new Pair<>(indexOfMatchingOpenBracket, i);
+                    Pair<Integer, Integer> pair = new Pair<Integer, Integer>(openBrackets.get(indexOfMatchingOpenBracket), i);
                     bracketPairs.add(pair);
                     openBrackets.remove(indexOfMatchingOpenBracket);
                 } else {

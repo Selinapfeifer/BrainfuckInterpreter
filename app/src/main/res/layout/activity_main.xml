@@ -10,9 +10,10 @@
         android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:autofillHints=""
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name" />
+        android:hint="Code"
+        android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/buttonShow"
@@ -34,7 +35,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/editText"
         android:layout_toRightOf="@id/buttonMoveRight"
-        android:text="@string/buttonMoveLeft" />
+        android:text="@string/buttonMoveLeft"
+        android:layout_toEndOf="@id/buttonMoveRight" />
 
     <Button
         android:id="@+id/buttonIncrease"
@@ -42,7 +44,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/editText"
         android:layout_toRightOf="@id/buttonMoveLeft"
-        android:text="@string/buttonIncrement" />
+        android:text="@string/buttonIncrement"
+        android:layout_toEndOf="@id/buttonMoveLeft" />
 
     <Button
         android:id="@+id/buttonDecrease"
@@ -50,7 +53,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/editText"
         android:layout_toRightOf="@id/buttonIncrease"
-        android:text="@string/buttonDecrement" />
+        android:text="@string/buttonDecrement"
+        android:layout_toEndOf="@id/buttonIncrease" />
 
     <Button
         android:id="@+id/buttonLoopStart"
@@ -65,7 +69,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/buttonMoveLeft"
         android:layout_toRightOf="@id/buttonLoopStart"
-        android:text="@string/buttonLoopEnd" />
+        android:text="@string/buttonLoopEnd"
+        android:layout_toEndOf="@id/buttonLoopStart" />
 
     <Button
         android:id="@+id/buttonOutput"
@@ -73,7 +78,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/buttonIncrease"
         android:layout_toRightOf="@id/buttonLoopEnd"
-        android:text="@string/buttonOutput" />
+        android:text="@string/buttonOutput"
+        android:layout_toEndOf="@id/buttonLoopEnd" />
 
     <Button
         android:id="@+id/buttonKomma"
@@ -81,6 +87,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/buttonDecrease"
         android:layout_toRightOf="@id/buttonOutput"
-        android:text="@string/buttonKomma" />
+        android:text="@string/buttonKomma"
+        android:layout_toEndOf="@id/buttonOutput" />
 
 </RelativeLayout>

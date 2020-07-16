@@ -9,5 +9,7 @@
     <string name="buttonLoopEnd">]</string>
     <string name="buttonOutput">.</string>
     <string name="buttonKomma">,</string>
+    <string name="codeHint">Code</string>
+    <string name="inputHint">Input</string>
 
 </resources>

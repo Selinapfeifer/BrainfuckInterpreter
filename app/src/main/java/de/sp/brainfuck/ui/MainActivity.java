@@ -15,14 +15,14 @@ import de.sp.brainfuck.core.exception.MalformedBracketsException;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     Button buttonMoveRight, buttonInterpret;
-    EditText editText;
+    EditText codeEditText, inputEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        editText = findViewById(R.id.editText);
-        editText.setText("");
+        codeEditText = findViewById(R.id.code);
+        inputEditText = findViewById(R.id.input);
         buttonMoveRight = findViewById(R.id.buttonMoveRight);
         buttonMoveRight.setOnClickListener(this);
         buttonInterpret = findViewById(R.id.buttonShow);
@@ -33,11 +33,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if (buttonMoveRight.isPressed()) {
-            editText.setText(editText.getText().append(">"));
+            codeEditText.setText(codeEditText.getText().append(">"));
         } else if (buttonInterpret.isPressed()) {
             BrainFuckInterpreter interpreter = new BrainFuckInterpreter();
             try {
-                String result = interpreter.interpret(editText.getText().toString());
+                String result = interpreter.interpret(codeEditText.getText().toString());
                 Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
             } catch (InvalidCharacterException | MalformedBracketsException e) {
                 Toast.makeText(getApplicationContext(), "Fehler", Toast.LENGTH_SHORT).show();

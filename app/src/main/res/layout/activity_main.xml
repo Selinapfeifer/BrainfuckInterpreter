@@ -7,13 +7,23 @@
     tools:context=".ui.MainActivity">
 
     <EditText
-        android:id="@+id/editText"
-        android:layout_width="wrap_content"
+        android:id="@+id/input"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="@string/inputHint"
+        android:inputType="textMultiLine" />
+
+    <EditText
+        android:id="@+id/code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/input"
         android:autofillHints=""
         android:ems="10"
-        android:hint="Code"
-        android:inputType="textPersonName" />
+        android:hint="@string/codeHint"
+        android:inputType="textMultiLine" />
 
     <Button
         android:id="@+id/buttonShow"
@@ -26,14 +36,14 @@
         android:id="@+id/buttonMoveRight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editText"
+        android:layout_below="@id/code"
         android:text="@string/buttonMoveRight" />
 
     <Button
         android:id="@+id/buttonMoveLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editText"
+        android:layout_below="@id/code"
         android:layout_toRightOf="@id/buttonMoveRight"
         android:text="@string/buttonMoveLeft"
         android:layout_toEndOf="@id/buttonMoveRight" />
@@ -42,7 +52,7 @@
         android:id="@+id/buttonIncrease"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editText"
+        android:layout_below="@id/code"
         android:layout_toRightOf="@id/buttonMoveLeft"
         android:text="@string/buttonIncrement"
         android:layout_toEndOf="@id/buttonMoveLeft" />
@@ -51,7 +61,7 @@
         android:id="@+id/buttonDecrease"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/editText"
+        android:layout_below="@id/code"
         android:layout_toRightOf="@id/buttonIncrease"
         android:text="@string/buttonDecrement"
         android:layout_toEndOf="@id/buttonIncrease" />

@@ -3,7 +3,6 @@ package de.sp.brainfuck.core;
 
 import androidx.core.util.Pair;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import de.sp.brainfuck.core.exception.InvalidCharacterException;
@@ -32,8 +31,8 @@ public class BrainFuckInterpreter {
                 index--;
             } else if (chars[i] == ValidCharacters.PRINT.getCharacter()) {
                 result.append(memory[index]);
-            } else if (chars[i] == ValidCharacters.TODO_COMMA.getCharacter()) {
-                // todo
+            } else if (chars[i] == ValidCharacters.READ_INPUT.getCharacter()) {
+                // todo memory[index] = "input value";
             } else if (chars[i] == ValidCharacters.OPEN_BRACKET.getCharacter()) {
                 if (memory[index] == 0) {
                     i = indexOfMatchingClosingBracket(bracketPairs, i);

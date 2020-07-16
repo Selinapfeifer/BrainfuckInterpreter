@@ -8,7 +8,7 @@ public enum ValidCharacters {
     DECREASE('-'),
     OPEN_BRACKET('['),
     CLOSING_BRACKET(']'),
-    TODO_COMMA(',');
+    READ_INPUT(',');
 
     char character;
 

@@ -12,10 +12,13 @@ import de.sp.brainfuck.core.validation.ValidCharacters;
 
 public class BrainFuckInterpreter {
 
-    public String interpret(String code) throws InvalidCharacterException, MalformedBracketsException {
+    public static final int MEMORY_SIZE = 1000;
+
+    public String interpret(String code, String input) throws InvalidCharacterException, MalformedBracketsException {
         char[] chars = code.toCharArray();
-        char[] memory = new char[30];
-        int memory_index = 0;
+        char[] memory = new char[MEMORY_SIZE];
+        int memory_index = 50;
+        int input_index = 0;
         List<Pair<Integer, Integer>> bracketPairs;
         bracketPairs = BrainFuckValidator.validateAndDetermineBracketPairs(chars);
 
@@ -32,14 +35,18 @@ public class BrainFuckInterpreter {
             } else if (chars[i] == ValidCharacters.PRINT.getCharacter()) {
                 result.append(memory[memory_index]);
             } else if (chars[i] == ValidCharacters.READ_INPUT.getCharacter()) {
-                // todo memory[index] = "input value";
+                if (input.length() > input_index) {
+                    memory[memory_index] = input.charAt(input_index);
+                } else {
+                    //todo
+                }
             } else if (chars[i] == ValidCharacters.OPEN_BRACKET.getCharacter()) {
                 if (memory[memory_index] == 0) {
                     i = indexOfMatchingClosingBracket(bracketPairs, i);
                 }
             } else if (chars[i] == ValidCharacters.CLOSING_BRACKET.getCharacter()) {
                 if (memory[memory_index] != 0) {
-                    i = indexOfMatchingOpenBracket(bracketPairs,i);
+                    i = indexOfMatchingOpenBracket(bracketPairs, i);
                 }
             }
         }
@@ -54,6 +61,7 @@ public class BrainFuckInterpreter {
         }
         return -1;
     }
+
     private int indexOfMatchingOpenBracket(List<Pair<Integer, Integer>> bracketPairs, int indexOfClosedBracket) {
         for (int i = 0; i < bracketPairs.size(); i++) {
             if (bracketPairs.get(i).second == indexOfClosedBracket) {

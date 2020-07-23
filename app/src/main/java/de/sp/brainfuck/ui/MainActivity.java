@@ -12,6 +12,7 @@ import de.sp.brainfuck.R;
 import de.sp.brainfuck.core.BrainFuckInterpreter;
 import de.sp.brainfuck.core.exception.InvalidCharacterException;
 import de.sp.brainfuck.core.exception.MalformedBracketsException;
+import de.sp.brainfuck.core.validation.ValidCharacters;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button buttonMoveRight, buttonInterpret, buttonMoveLeft, buttonOutput, buttonIncrease, buttonDecrease, buttonInput, buttonOpeningBracket, buttonClosingBracket;
@@ -57,37 +58,51 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         if (buttonMoveRight.isPressed()) {
-            codeEditText.setText(codeEditText.getText().append(">"));
+            addCharAfterCodeCursor(ValidCharacters.SHIFT_RIGHT);
         }
         if (buttonMoveLeft.isPressed()) {
-            codeEditText.setText(codeEditText.getText().append("<"));
+            addCharAfterCodeCursor(ValidCharacters.SHIFT_LEFT);
         }
-        if (buttonIncrease.isPressed()){
-            codeEditText.setText(codeEditText.getText().append("+"));
+        if (buttonIncrease.isPressed()) {
+            addCharAfterCodeCursor(ValidCharacters.INCREASE);
         }
-        if (buttonDecrease.isPressed()){
-            codeEditText.setText(codeEditText.getText().append("-"));
+        if (buttonDecrease.isPressed()) {
+            addCharAfterCodeCursor(ValidCharacters.DECREASE);
         }
-        if (buttonOutput.isPressed()){
-            codeEditText.setText(codeEditText.getText().append("."));
+        if (buttonOutput.isPressed()) {
+            addCharAfterCodeCursor(ValidCharacters.PRINT);
         }
-        if (buttonInput.isPressed()){
-            codeEditText.setText(codeEditText.getText().append(","));
+        if (buttonInput.isPressed()) {
+            addCharAfterCodeCursor(ValidCharacters.READ_INPUT);
         }
-        if (buttonOpeningBracket.isPressed()){
-            codeEditText.setText(codeEditText.getText().append("["));
+        if (buttonOpeningBracket.isPressed()) {
+            addCharAfterCodeCursor(ValidCharacters.OPEN_BRACKET);
         }
-        if (buttonClosingBracket.isPressed()){
-            codeEditText.setText(codeEditText.getText().append("]"));
-        }
-        else if (buttonInterpret.isPressed()) {
-            BrainFuckInterpreter interpreter = new BrainFuckInterpreter();
-            try {
-                String result = interpreter.interpret(codeEditText.getText().toString(), inputEditText.getText().toString());
-                Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
-            } catch (InvalidCharacterException | MalformedBracketsException e) {
-                Toast.makeText(getApplicationContext(), "Fehler", Toast.LENGTH_SHORT).show();
-            }
+        if (buttonClosingBracket.isPressed()) {
+            addCharAfterCodeCursor(ValidCharacters.CLOSING_BRACKET);
+        } else if (buttonInterpret.isPressed()) {
+            interpretCode();
         }
     }
+
+    private void addCharAfterCodeCursor(ValidCharacters validChar) {
+        int cursorPosition = codeEditText.getSelectionStart();
+        String prefix = codeEditText.getText().toString().substring(0, cursorPosition);
+        String postfix = codeEditText.getText().toString().substring(cursorPosition);
+
+        String code = prefix + validChar.getCharacter() + postfix;
+        codeEditText.setText(code);
+        codeEditText.setSelection(cursorPosition + 1);
+    }
+
+    private void interpretCode() {
+        BrainFuckInterpreter interpreter = new BrainFuckInterpreter();
+        try {
+            String result = interpreter.interpret(codeEditText.getText().toString(), inputEditText.getText().toString());
+            Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+        } catch (InvalidCharacterException | MalformedBracketsException e) {
+            Toast.makeText(getApplicationContext(), "Fehler", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }

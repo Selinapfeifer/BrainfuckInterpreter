@@ -100,4 +100,20 @@
         android:text="@string/buttonKomma"
         android:layout_toEndOf="@id/buttonOutput" />
 
+    <TextView
+        android:id="@+id/textViewOutput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewErgebnis"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/textViewErgebnis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonShow"
+        android:text="@string/textviewErgebnis"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
 </RelativeLayout>

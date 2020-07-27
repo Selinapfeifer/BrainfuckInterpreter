@@ -21,8 +21,8 @@ public class BrainFuckInterpreterTest {
 
     @Test
     public void testOneLoop() throws InvalidCharacterException, MalformedBracketsException {
-        String result = cut.interpret(">+++++++++[<++++++++>-]<.", "");
-        assertEquals("H", result);
+        String result = cut.interpret(">+++++++[<+++++++>-]<.", "");
+        assertEquals("1", result);
     }
 
     @Test

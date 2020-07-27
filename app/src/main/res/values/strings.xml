@@ -11,5 +11,6 @@
     <string name="buttonKomma">,</string>
     <string name="codeHint">Code</string>
     <string name="inputHint">Input</string>
+    <string name="textviewErgebnis">Ergebnis:</string>
 
 </resources>

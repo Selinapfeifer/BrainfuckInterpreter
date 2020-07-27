@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import de.sp.brainfuck.R;
@@ -17,12 +18,14 @@ import de.sp.brainfuck.core.validation.ValidCharacters;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button buttonMoveRight, buttonInterpret, buttonMoveLeft, buttonOutput, buttonIncrease, buttonDecrease, buttonInput, buttonOpeningBracket, buttonClosingBracket;
     private EditText codeEditText, inputEditText;
+    TextView textViewOutput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         codeEditText = findViewById(R.id.code);
+        BrainFuckInterpreter interpreter = new BrainFuckInterpreter();
 
         inputEditText = findViewById(R.id.input);
 
@@ -52,6 +55,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         buttonInterpret = findViewById(R.id.buttonShow);
         buttonInterpret.setOnClickListener(this);
+
+
+
+
 
     }
 
@@ -100,6 +107,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         try {
             String result = interpreter.interpret(codeEditText.getText().toString(), inputEditText.getText().toString());
             Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
+            textViewOutput = findViewById(R.id.textViewOutput);
+            textViewOutput.setText(result + "");
         } catch (InvalidCharacterException | MalformedBracketsException e) {
             Toast.makeText(getApplicationContext(), "Fehler", Toast.LENGTH_SHORT).show();
         }

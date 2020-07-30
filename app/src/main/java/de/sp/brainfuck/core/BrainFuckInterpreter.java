@@ -33,11 +33,8 @@ public class BrainFuckInterpreter {
             } else if (chars[i] == ValidCharacters.PRINT.getCharacter()) {
                 result.append(memory[memory_index]);
             } else if (chars[i] == ValidCharacters.READ_INPUT.getCharacter()) {
-                if (input.length() > input_index) {
-                    memory[memory_index] = input.charAt(input_index);
-                } else {
-                    //todo
-                }
+                memory[memory_index] = input.charAt(input_index);
+                input_index++;
             } else if (chars[i] == ValidCharacters.OPEN_BRACKET.getCharacter()) {
                 if (memory[memory_index] == 0) {
                     i = indexOfMatchingClosingBracket(bracketPairs, i);

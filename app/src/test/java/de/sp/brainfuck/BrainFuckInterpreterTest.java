@@ -27,19 +27,13 @@ public class BrainFuckInterpreterTest {
 
     @Test
     public void testTwoSeparateLoops() throws InvalidCharacterException, MalformedBracketsException {
-        String result = cut.interpret(">+++++++++[<++++++++>-]<.>>+++++++++[<++++++++>-]<.", "");
-        assertEquals("HH", result);
+        String result = cut.interpret(">+++++++++[<++++++++>-]<.>>++++++++++[<+++++++>-]<.", "");
+        assertEquals("HF", result);
     }
 
     @Test
     public void testOutputSize() throws InvalidCharacterException, MalformedBracketsException {
         String result = cut.interpret(".....", "");
         assertEquals(5, result.length());
-    }
-
-    @Test
-    public void test() throws InvalidCharacterException, MalformedBracketsException {
-        String result = cut.interpret("<++++++++[>+++++++++<-]>.", "");
-        assertEquals("HH", result);
     }
 }

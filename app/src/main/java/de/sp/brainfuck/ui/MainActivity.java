@@ -108,9 +108,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String result = interpreter.interpret(codeEditText.getText().toString(), inputEditText.getText().toString());
             Toast.makeText(getApplicationContext(), result, Toast.LENGTH_SHORT).show();
             textViewOutput = findViewById(R.id.textViewOutput);
-            textViewOutput.setText(result + "");
+            textViewOutput.setText(result);
         } catch (InvalidCharacterException | MalformedBracketsException e) {
-            Toast.makeText(getApplicationContext(), "Fehler", Toast.LENGTH_SHORT).show();
+            textViewOutput.setText("Fehler " + e.getMessage());
         }
     }
 

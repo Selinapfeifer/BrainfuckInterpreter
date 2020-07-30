@@ -37,12 +37,12 @@ public class BrainFuckParser {
         return bracketPairs;
     }
 
-    private static void checkCharIsValid(char chars) throws InvalidCharacterException {
+    private static void checkCharIsValid(char character) throws InvalidCharacterException {
         for (ValidCharacters validChar : ValidCharacters.values()) {
-            if (chars == validChar.getCharacter()) {
+            if (character == validChar.getCharacter()) {
                 return;
             }
         }
-        throw new InvalidCharacterException(chars);
+        throw new InvalidCharacterException(character);
     }
 }

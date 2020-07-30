@@ -13,7 +13,7 @@ import de.sp.brainfuck.R;
 import de.sp.brainfuck.core.BrainFuckInterpreter;
 import de.sp.brainfuck.core.exception.InvalidCharacterException;
 import de.sp.brainfuck.core.exception.MalformedBracketsException;
-import de.sp.brainfuck.core.validation.ValidCharacters;
+import de.sp.brainfuck.core.ValidCharacters;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button buttonMoveRight, buttonInterpret, buttonMoveLeft, buttonOutput, buttonIncrease, buttonDecrease, buttonInput, buttonOpeningBracket, buttonClosingBracket;

@@ -7,8 +7,6 @@ import java.util.List;
 
 import de.sp.brainfuck.core.exception.InvalidCharacterException;
 import de.sp.brainfuck.core.exception.MalformedBracketsException;
-import de.sp.brainfuck.core.validation.BrainFuckValidator;
-import de.sp.brainfuck.core.validation.ValidCharacters;
 
 public class BrainFuckInterpreter {
 
@@ -20,7 +18,7 @@ public class BrainFuckInterpreter {
         int memory_index = 50;
         int input_index = 0;
         List<Pair<Integer, Integer>> bracketPairs;
-        bracketPairs = BrainFuckValidator.validateAndDetermineBracketPairs(chars);
+        bracketPairs = BrainFuckParser.parse(chars);
 
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < chars.length; i++) {

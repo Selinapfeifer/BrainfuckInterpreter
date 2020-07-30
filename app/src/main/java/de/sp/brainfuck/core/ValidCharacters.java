@@ -1,4 +1,4 @@
-package de.sp.brainfuck.core.validation;
+package de.sp.brainfuck.core;
 
 public enum ValidCharacters {
     PRINT('.'),

@@ -1,4 +1,4 @@
-package de.sp.brainfuck.core.validation;
+package de.sp.brainfuck.core;
 
 import androidx.core.util.Pair;
 
@@ -8,9 +8,9 @@ import java.util.List;
 import de.sp.brainfuck.core.exception.InvalidCharacterException;
 import de.sp.brainfuck.core.exception.MalformedBracketsException;
 
-public class BrainFuckValidator {
+public class BrainFuckParser {
 
-    public static List<Pair<Integer, Integer>> validateAndDetermineBracketPairs(char[] chars) throws MalformedBracketsException, InvalidCharacterException {
+    public static List<Pair<Integer, Integer>> parse(char[] chars) throws MalformedBracketsException, InvalidCharacterException {
         List<Pair<Integer, Integer>> bracketPairs = new ArrayList<>();
         List<Integer> openBrackets = new ArrayList<>();
 
